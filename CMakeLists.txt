@@ -15,7 +15,8 @@ include_directories ( ${ALSA_INCLUDE_DIRS} )
 add_compile_options ( ${ALSA_CFLAGS_OTHER} )
 
 file ( GLOB SFMIDI_SRC
-    src/*
+    src/util/*
+    src/midi/*
 )
 
 include_directories ( src )
@@ -26,6 +27,8 @@ add_library ( sfmidi STATIC
 
 set ( SFMIDI_LIBS
     sfmidi
+    ${ALSA_LDFLAGS_OTHER}
+    ${ALSA_LIBRARIES}
 )
 
 add_executable ( midi-test src/frontend/midi-test.cc )
